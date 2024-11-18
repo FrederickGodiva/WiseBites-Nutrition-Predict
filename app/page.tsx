@@ -1,7 +1,11 @@
+import Navbar from "./components/Navbar";
+import Upload from "./components/Upload";
+
 export default function Home() {
   return (
-    <>
-      <h1 className="text-3xl text-indigo-600 p-5">Hello World!</h1>
-    </>
+    <div className="flex flex-col items-start w-screen h-screen gap-8 p-5">
+      <Navbar />
+      <Upload />
+    </div>
   );
 }
