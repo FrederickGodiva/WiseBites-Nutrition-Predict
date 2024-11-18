@@ -53,13 +53,14 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ file, setFile }) => {
   };
 
   return (
-    <form className="flex flex-col w-full h-full gap-2">
+    <form className="flex flex-col w-full h-full gap-2" method="POST">
       <input
         ref={inputRef}
         type="file"
         accept="image/jpeg,image/png,image/svg+xml"
         onChange={handleFileChange}
         className="hidden"
+        name="picture"
         id="file-input"
       />
       <div
