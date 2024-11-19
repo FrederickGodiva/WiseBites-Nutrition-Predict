@@ -13,6 +13,12 @@ export default {
         secondary: "#1F272D",
         tertiary: "#6A6A6A",
       },
+      borderRadius: {
+        nutritions: "50px",
+      },
+      fontSize: {
+        xs: "8px",
+      },
     },
   },
   plugins: [],

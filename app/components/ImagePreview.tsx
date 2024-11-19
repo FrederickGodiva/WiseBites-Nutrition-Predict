@@ -2,17 +2,19 @@ import React from "react";
 import Image from "next/image";
 
 interface ImagePreviewProps {
-  file: File | null;
+  image: File | null;
 }
 
-const ImagePreview: React.FC<ImagePreviewProps> = ({ file }) => {
+const ImagePreview: React.FC<ImagePreviewProps> = ({ image }) => {
   return (
     <div className="flex items-center justify-center w-full h-full border-2 border-dashed rounded-lg border-tertiary">
-      {file ? (
-        <img
-          src={URL.createObjectURL(file)}
+      {image ? (
+        <Image
+          src={URL.createObjectURL(image!)}
           alt="Uploaded Preview"
-          className="object-fill"
+          className="object-cover w-full max-h-full"
+          width={150}
+          height={80}
         />
       ) : (
         <div className="flex flex-col items-center">
