@@ -7,10 +7,12 @@ import Output from "./Output";
 
 const Analyze: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
+  const [image, setImage] = useState<File | null>(null);
   const [showResult, setShowResult] = useState(false);
 
   const handleSend = () => {
     if (file) {
+      setImage(file);
       setShowResult(true);
     }
   };
@@ -29,7 +31,7 @@ const Analyze: React.FC = () => {
         </div>
         <ImagePreview image={file} />
       </div>
-      <div>{showResult && <Output image={file} />}</div>
+      <div>{showResult && <Output image={image} />}</div>
     </div>
   );
 };
