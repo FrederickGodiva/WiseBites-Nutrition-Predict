@@ -16,8 +16,8 @@ const Analyze: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-32 mb-24">
-      <div className="grid w-full h-full gap-20 mb-4 md:px-12 md:grid-cols-2 align-items-center">
+    <div className="flex flex-col md:gap-32 gap-16 mb-24">
+      <div className="grid w-full h-full gap-10 md:gap-20 mb-4 md:px-12 md:grid-cols-2 align-items-center">
         <div className="flex flex-col justify-start gap-1 md:gap-3">
           <h2 className="text-3xl font-bold md:text-5xl text-secondary">
             Upload a photo of your delicious meal...

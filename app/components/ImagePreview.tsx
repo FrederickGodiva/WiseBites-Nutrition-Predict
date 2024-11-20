@@ -12,7 +12,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ image }) => {
         <Image
           src={URL.createObjectURL(image!)}
           alt="Uploaded Preview"
-          className="object-cover w-full max-h-full"
+          className="object-cover w-full h-[550px]"
           width={150}
           height={80}
         />
