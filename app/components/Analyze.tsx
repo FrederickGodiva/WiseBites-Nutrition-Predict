@@ -4,16 +4,39 @@ import React, { useState } from "react";
 import ImageUpload from "./ImageUpload";
 import ImagePreview from "./ImagePreview";
 import Output from "./Output";
+import predictFood from "@/app/api/flaskClient";
+
+interface Nutrition {
+  id: number;
+  name: string;
+  calories: number;
+  fat: number;
+  carbohydrate: number;
+  protein: number;
+}
+
+interface Prediction {
+  predicted_label: string;
+  nutritions: Nutrition;
+}
 
 const Analyze: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
   const [image, setImage] = useState<File | null>(null);
-  const [showResult, setShowResult] = useState(false);
+  const [showResult, setShowResult] = useState<boolean>(false);
+  const [prediction, setPrediction] = useState<Prediction | null>(null);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (file) {
       setImage(file);
-      setShowResult(true);
+
+      try {
+        const predictedLabel = await predictFood(file);
+        setPrediction(predictedLabel as Prediction);
+        setShowResult(true);
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -31,7 +54,11 @@ const Analyze: React.FC = () => {
         </div>
         <ImagePreview image={file} />
       </div>
-      <div>{showResult && <Output image={image} />}</div>
+      <div>
+        {showResult && prediction && (
+          <Output image={image} prediction={prediction} />
+        )}
+      </div>
     </div>
   );
 };
