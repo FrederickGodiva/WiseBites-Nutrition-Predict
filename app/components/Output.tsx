@@ -1,23 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Nutritions from "./Nutritions";
-
-interface Nutrition {
-  calories: number;
-  fat: number;
-  carbohydrate: number;
-  protein: number;
-}
-
-interface Prediction {
-  predicted_label: string;
-  nutritions: Nutrition;
-}
-
-interface OutputProps {
-  image: File | null;
-  prediction: Prediction;
-}
+import { OutputProps } from "@/types";
 
 const Output: React.FC<OutputProps> = ({ image, prediction }) => {
   const { predicted_label, nutritions } = prediction;
@@ -62,20 +46,30 @@ const Output: React.FC<OutputProps> = ({ image, prediction }) => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-6">
-          {nutritionData.map((item, index) => (
-            <Nutritions
-              key={index}
-              icon={item.icon}
-              nutrition={item.nutrition}
-              value={item.value}
-              className={
-                index % 2 !== 0
-                  ? "bg-primary text-white border-none"
-                  : "border-black"
-              }
-            />
-          ))}
+        <div className="grid items-center w-full grid-cols-2 grid-rows-2 gap-5 md:gap-6 md:grid-rows-4 md:grid-cols-1">
+          {nutritionData.map((nutrition, index) => {
+            return index % 2 === 0 ? (
+              <Nutritions
+                key={index}
+                icon={nutrition.icon}
+                nutrition={nutrition.nutrition}
+                nutritionColor={"text-tertiary"}
+                value={nutrition.value}
+                valueColor={"text-dark"}
+                border={"border-2 border-black"}
+              />
+            ) : (
+              <Nutritions
+                key={index}
+                icon={nutrition.icon}
+                nutrition={nutrition.nutrition}
+                nutritionColor={"text-white"}
+                value={nutrition.value}
+                valueColor={"text-white"}
+                border={"border-none bg-primary"}
+              />
+            );
+          })}
         </div>
       </div>
     </>

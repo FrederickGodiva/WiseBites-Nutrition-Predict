@@ -1,11 +1,6 @@
 import React, { DragEvent, ChangeEvent, useRef } from "react";
 import Image from "next/image";
-
-interface ImageUploadProps {
-  file: File | null;
-  setFile: (file: File | null) => void;
-  onSend: () => void;
-}
+import { ImageUploadProps } from "@/types";
 
 const MAX_FILE_SIZE = 20 * 1024 * 1024;
 

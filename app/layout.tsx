@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Wisebites - Nutrition Prediction",
-  description: "Wisebites",
+  title: "WiseLens - Nutrition Prediction",
+  description: "WiseLens",
 };
 
 export default function RootLayout({

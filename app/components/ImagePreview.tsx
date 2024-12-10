@@ -1,9 +1,6 @@
 import React from "react";
 import Image from "next/image";
-
-interface ImagePreviewProps {
-  image: File | null;
-}
+import { ImagePreviewProps } from "@/types";
 
 const ImagePreview: React.FC<ImagePreviewProps> = ({ image }) => {
   return (

@@ -5,20 +5,7 @@ import ImageUpload from "./ImageUpload";
 import ImagePreview from "./ImagePreview";
 import Output from "./Output";
 import predictFood from "@/app/api/flaskClient";
-
-interface Nutrition {
-  id: number;
-  name: string;
-  calories: number;
-  fat: number;
-  carbohydrate: number;
-  protein: number;
-}
-
-interface Prediction {
-  predicted_label: string;
-  nutritions: Nutrition;
-}
+import { Prediction } from "@/types";
 
 const Analyze: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
